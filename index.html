@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue fundamentos </title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        const vm = Vue.createApp({
+            data() {
+                return {
+                    text: "<h1>Hola Vue!!</h1>",
+                    alumno: {
+                        Nombre: "Miguel",
+                        ApPaterno: "Longinos"
+                    }
+                }
+            },
+            // v-once => directiva que no permite el renderizado multiple
+            //v-text => Directiva para mostrar un valor string
+            // v-html => Directiva para mostrar html
+            template: `<p  v-html="text"></p>`
+        }).mount("#app")
+    </script>
+</body>
+
+</html>
