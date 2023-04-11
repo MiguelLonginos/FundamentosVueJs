@@ -22,13 +22,32 @@
                     alumno: {
                         Nombre: "Miguel",
                         ApPaterno: "Longinos"
-                    }
+                    },
+                    counter: 0
                 }
             },
-            // v-once => directiva que no permite el renderizado multiple
-            //v-text => Directiva para mostrar un valor string
-            // v-html => Directiva para mostrar html
-            template: `<p  v-html="text"></p>`
+            methods: {
+                incrementar() {
+                    this.counter++;
+                    this.mensaje();
+                },
+                decrementar() {
+                    if (this.counter > 0) {
+
+                        this.counter--;
+                    }
+                },
+                mensaje() {
+                    console.log("Mensaje")
+                }
+
+            },
+            //v-on => directiva para manejo de eventos
+            template: `<div>
+                        <button v-on:click="incrementar">+</button>
+                        <p>{{counter}}</p>
+                        <button v-on:click="decrementar" >-</button>
+                </div>`
         }).mount("#app")
     </script>
 </body>
