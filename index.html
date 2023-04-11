@@ -22,13 +22,19 @@
                     alumno: {
                         Nombre: "Miguel",
                         ApPaterno: "Longinos"
-                    }
+                    },
+                    urlImage: "https://i.blogs.es/57c8cc/super-mario-bros-critica-espinof/450_1000.jpeg",
+                    tipo: "text"
                 }
             },
             // v-once => directiva que no permite el renderizado multiple
             //v-text => Directiva para mostrar un valor string
             // v-html => Directiva para mostrar html
-            template: `<p  v-html="text"></p>`
+            // v-bind => Directica para manejo de atributos reactivos
+            template: `<div>
+                    <img v-bind:src="urlImage" />
+                    <input v-bind:type="tipo" value="click">
+                </div>`
         }).mount("#app")
     </script>
 </body>
