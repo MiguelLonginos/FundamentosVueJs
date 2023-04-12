@@ -15,22 +15,54 @@
 
     </div>
     <script>
-        const vm = Vue.createApp({
+        const app = Vue.createApp({
             data() {
                 return {
                     text: "<h1>Hola Vue!!</h1>",
                     alumno: {
                         Nombre: "Miguel",
                         ApPaterno: "Longinos"
-                    }
+                    },
+
+                    usuario: "",
+                    password: ""
                 }
             },
             // v-once => directiva que no permite el renderizado multiple
             //v-text => Directiva para mostrar un valor string
             // v-html => Directiva para mostrar html
-            template: `<p  v-html="text"></p>`
-        }).mount("#app")
+            template: `<div>
+                    <custom-input  :plcholder="'Usuario'" v-model:valor="usuario"  />
+                    <br>
+                    <custom-input v-bind:plcholder="'password'" v-model:valor="password" />
+                </div>`
+        })
+
+        app.component("custom-input", {
+            props: {
+                plcholder: String,
+                valor: String
+            },
+            methods: {
+                changeInput(e) {
+                    this.$emit("update:valor", e.target.value)
+                }
+            },
+            template: `
+                    <div>
+                        <input class="input" type="text" :placeholder="plcholder" :value="valor" v-on:input="changeInput"  />            
+                    </div>`
+
+
+        })
+
+        const vm = app.mount("#app")
     </script>
+    <style>
+        .input {
+            background-color: skyblue;
+        }
+    </style>
 </body>
 
 </html>
