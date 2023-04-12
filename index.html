@@ -25,10 +25,17 @@
                     }
                 }
             },
+            computed: {
+                fullName() {
+                    return `Nombre completo: ${this.alumno.Nombre} ${this.alumno.ApPaterno}`;
+                }
+            },
             // v-once => directiva que no permite el renderizado multiple
             //v-text => Directiva para mostrar un valor string
             // v-html => Directiva para mostrar html
-            template: `<p  v-html="text"></p>`
+            template: `<p>
+                    {{ fullName }}
+                </p>`
         }).mount("#app")
     </script>
 </body>
