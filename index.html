@@ -18,19 +18,35 @@
         const vm = Vue.createApp({
             data() {
                 return {
-                    text: "<h1>Hola Vue!!</h1>",
+                    text: "Hola Vue!!",
                     alumno: {
                         Nombre: "Miguel",
                         ApPaterno: "Longinos"
-                    }
+                    },
+                    valida: false
                 }
             },
             // v-once => directiva que no permite el renderizado multiple
             //v-text => Directiva para mostrar un valor string
             // v-html => Directiva para mostrar html
-            template: `<p  v-html="text"></p>`
+            template: `<div :class="[valida ? 'sky' : 'gray']">
+                    {{ text }}
+                </div>
+                <button @click="valida = !valida">click</button>
+                
+                `
+
         }).mount("#app")
     </script>
+    <style>
+        .sky {
+            background-color: skyblue;
+        }
+
+        .gray {
+            background-color: gray;
+        }
+    </style>
 </body>
 
 </html>
