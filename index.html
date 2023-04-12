@@ -18,19 +18,39 @@
         const vm = Vue.createApp({
             data() {
                 return {
-                    text: "<h1>Hola Vue!!</h1>",
+                    text: "Hola vue!!",
                     alumno: {
                         Nombre: "Miguel",
                         ApPaterno: "Longinos"
-                    }
+                    },
+                    valida: false
                 }
             },
             // v-once => directiva que no permite el renderizado multiple
             //v-text => Directiva para mostrar un valor string
             // v-html => Directiva para mostrar html
-            template: `<p  v-html="text"></p>`
+            // v-if => Directiva para manejo de condicionales
+            // v-show => Directiva para manejo de ocultar o visualizar elementos del DOM
+            template: `<div v-show="valida" class="titulo">
+                    {{ text }}
+                </div>
+                <div v-show="!valida" class="titulo2">
+                    {{ alumno.Nombre }}
+                </div>
+                <button @click="valida = !valida">click</button>
+                `
         }).mount("#app")
     </script>
+    <style>
+        .titulo {
+            background-color: skyblue;
+        }
+
+        .titulo2 {
+            background-color: gray;
+
+        }
+    </style>
 </body>
 
 </html>
