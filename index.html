@@ -18,17 +18,22 @@
         const vm = Vue.createApp({
             data() {
                 return {
-                    text: "<h1>Hola Vue!!</h1>",
+                    text: "Hola Vue!!",
                     alumno: {
                         Nombre: "Miguel",
                         ApPaterno: "Longinos"
                     }
                 }
             },
+            watch: {
+                text(value, beforeValue) {
+                    console.log("watcher", value, beforeValue);
+                }
+            },
             // v-once => directiva que no permite el renderizado multiple
             //v-text => Directiva para mostrar un valor string
             // v-html => Directiva para mostrar html
-            template: `<p  v-html="text"></p>`
+            template: `<p  v-text="text"></p>`
         }).mount("#app")
     </script>
 </body>
