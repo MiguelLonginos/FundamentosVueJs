@@ -19,16 +19,39 @@
             data() {
                 return {
                     text: "<h1>Hola Vue!!</h1>",
-                    alumno: {
-                        Nombre: "Miguel",
-                        ApPaterno: "Longinos"
-                    }
+                    lAlumno: [
+                        {
+                            Nombre: "Miguel",
+                            ApPaterno: "Longinos"
+                        },
+                        {
+                            Nombre: "Pedro",
+                            ApPaterno: "Perez"
+                        },
+                        {
+                            Nombre: "Antonio",
+                            ApPaterno: "Hernandez"
+                        }
+                    ]
+                }
+            },
+            methods: {
+                eliminar(index) {
+                    this.lAlumno.splice(index, 1);
+                    //console.log("eliminar", index)
                 }
             },
             // v-once => directiva que no permite el renderizado multiple
             //v-text => Directiva para mostrar un valor string
             // v-html => Directiva para mostrar html
-            template: `<p  v-html="text"></p>`
+            template: `<div>
+                    <ul>
+                        <li v-for="(item, index) in lAlumno" :key="index">
+                            {{ item.Nombre }} <button @click="eliminar(index)">-</button>    
+                        </li>    
+                      
+                    </ul>
+                </div>`
         }).mount("#app")
     </script>
 </body>
